@@ -18,6 +18,7 @@ export default function Index() {
         <Text style={{fontSize: 40}}>Welcome to this "game" app.</Text>
         <Button href="/map" label="Map of Sebastopol" />
         <Button href="/map?lat=42.361145&long=-71.057083" label="Map of Boston" />
+        <Button href="/tic-tac-toe" label="Tic Tac Toe" />
         <Button href="/settings" label="Change Settings" />
       </View>
     </>
