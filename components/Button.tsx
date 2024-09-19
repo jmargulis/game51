@@ -1,58 +1,59 @@
 import { Link, Href } from "expo-router";
-import { Pressable, Text } from "react-native";
-
-
-// import { Text, TouchableOpacity } from "react-native";
-// import { Href, useRouter } from "expo-router";
+import { Pressable, Text, View } from "react-native";
 
 type Props = {
-  href: Href<string>;
+  href?: Href<string>;
+  onPress?: () => void;
   label: string;
 }
 
-const Button = ({href, label}: Props) => {
-  // const router = useRouter()
-
-  return (
-    <Link href={href} asChild>
-    <Pressable
+const Button = ({href, onPress, label}: Props) => {
+  if (href) {
+    return (
+      <Link href={href} asChild>
+        <Pressable
+          style={{
+            minHeight: 50,
+            width: "80%",
+            backgroundColor: "#333333",
+            borderRadius: 16,
+            justifyContent: "center",
+            alignItems: "center",
+            paddingLeft: 20,
+            paddingRight: 20,
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 20,
+              color: "#FFFFFF",
+            }}
+          >{label}</Text>
+        </Pressable>
+      </Link>
+    );
+  } else if (onPress) {
+    return (<View><Pressable
+    style={{
+      minHeight: 50,
+      width: "80%",
+      backgroundColor: "#333333",
+      borderRadius: 16,
+      justifyContent: "center",
+      alignItems: "center",
+      paddingLeft: 20,
+      paddingRight: 20,
+    }}
+    onPress={onPress}
+  >
+    <Text
       style={{
-        minHeight: 50,
-        width: "80%",
-        backgroundColor: "#333333",
-        borderRadius: 16,
-        justifyContent: "center",
-        alignItems: "center",
-        paddingLeft: 20,
-        paddingRight: 20,
+        fontSize: 20,
+        color: "#FFFFFF",
       }}
-    >
-      <Text
-        style={{
-          fontSize: 20,
-          color: "#FFFFFF",
-        }}
-      >{label}</Text>
-    </Pressable>
-  </Link>
-
-
-
-    // <TouchableOpacity
-    //   style={{
-    //     minHeight: 50,
-    //     backgroundColor: "#FF7754",
-    //     borderRadius: 16,
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //   }}
-    //   onPress={() => {
-    //     router.push(page)
-    //   }}
-    // >
-    //   <Text>{label}</Text>
-    // </TouchableOpacity>
-  )
+    >{label}</Text>
+  </Pressable></View>);
+  }
 }
 
 export default Button
